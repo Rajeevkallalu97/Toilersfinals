@@ -32,6 +32,8 @@ public class InspectproServiceMetadata {
     public class EntityTypes {
         private static var allComponentsType_: EntityType = InspectproServiceMetadataParser.parsed.entityType(withName: "inspectpro.InspectproService.AllComponentsType")
 
+        private static var allocatedListType_: EntityType = InspectproServiceMetadataParser.parsed.entityType(withName: "inspectpro.InspectproService.AllocatedListType")
+
         private static var inspectorType_: EntityType = InspectproServiceMetadataParser.parsed.entityType(withName: "inspectpro.InspectproService.InspectorType")
 
         private static var supervisorType_: EntityType = InspectproServiceMetadataParser.parsed.entityType(withName: "inspectpro.InspectproService.SupervisorType")
@@ -49,6 +51,23 @@ public class InspectproServiceMetadata {
             defer { objc_sync_exit(InspectproServiceMetadata.EntityTypes.self); }
             do {
                 InspectproServiceMetadata.EntityTypes.allComponentsType_ = value
+            }
+        }
+        }
+
+        public static var allocatedListType: EntityType {
+            get {
+                objc_sync_enter(InspectproServiceMetadata.EntityTypes.self)
+                defer { objc_sync_exit(InspectproServiceMetadata.EntityTypes.self); }
+                do {
+                    return InspectproServiceMetadata.EntityTypes.allocatedListType_
+                }
+            }
+        set(value) {
+            objc_sync_enter(InspectproServiceMetadata.EntityTypes.self)
+            defer { objc_sync_exit(InspectproServiceMetadata.EntityTypes.self); }
+            do {
+                InspectproServiceMetadata.EntityTypes.allocatedListType_ = value
             }
         }
         }
@@ -91,6 +110,8 @@ public class InspectproServiceMetadata {
     public class EntitySets {
         private static var allComponents_: EntitySet = InspectproServiceMetadataParser.parsed.entitySet(withName: "AllComponents")
 
+        private static var allocatedList_: EntitySet = InspectproServiceMetadataParser.parsed.entitySet(withName: "AllocatedList")
+
         private static var inspector_: EntitySet = InspectproServiceMetadataParser.parsed.entitySet(withName: "Inspector")
 
         private static var supervisor_: EntitySet = InspectproServiceMetadataParser.parsed.entitySet(withName: "Supervisor")
@@ -108,6 +129,23 @@ public class InspectproServiceMetadata {
             defer { objc_sync_exit(InspectproServiceMetadata.EntitySets.self); }
             do {
                 InspectproServiceMetadata.EntitySets.allComponents_ = value
+            }
+        }
+        }
+
+        public static var allocatedList: EntitySet {
+            get {
+                objc_sync_enter(InspectproServiceMetadata.EntitySets.self)
+                defer { objc_sync_exit(InspectproServiceMetadata.EntitySets.self); }
+                do {
+                    return InspectproServiceMetadata.EntitySets.allocatedList_
+                }
+            }
+        set(value) {
+            objc_sync_enter(InspectproServiceMetadata.EntitySets.self)
+            defer { objc_sync_exit(InspectproServiceMetadata.EntitySets.self); }
+            do {
+                InspectproServiceMetadata.EntitySets.allocatedList_ = value
             }
         }
         }

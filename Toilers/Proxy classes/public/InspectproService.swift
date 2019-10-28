@@ -19,6 +19,16 @@ open class InspectproService<Provider: DataServiceProvider>: DataService<Provide
         self.fetchAllComponents(matching: query, headers: nil, options: nil, completionHandler: completionHandler)
     }
 
+    @available(swift, deprecated: 4.0, renamed: "fetchAllocatedList")
+    open func allocatedList(query: DataQuery = DataQuery()) throws -> Array<AllocatedListType> {
+        return try self.fetchAllocatedList(matching: query)
+    }
+
+    @available(swift, deprecated: 4.0, renamed: "fetchAllocatedList")
+    open func allocatedList(query: DataQuery = DataQuery(), completionHandler: @escaping (Array<AllocatedListType>?, Error?) -> Void) -> Void {
+        self.fetchAllocatedList(matching: query, headers: nil, options: nil, completionHandler: completionHandler)
+    }
+
     open func fetchAllComponents(matching query: DataQuery? = nil, headers: HTTPHeaders? = nil, options: RequestOptions? = nil) throws -> Array<AllComponentsType> {
         let var_query = DataQuery.newIfNull(query: query)
         let var_headers = HTTPHeaders.emptyIfNull(headers: headers)
@@ -73,6 +83,72 @@ open class InspectproService<Provider: DataServiceProvider>: DataService<Provide
         self.addBackgroundOperationForFunction {
         do {
             let result = try self.fetchAllComponentsTypeWithKey(id: id, query: query, headers: headers, options: options)
+            self.completionQueue.addOperation {
+                completionHandler(result, nil)
+            }
+        }
+        catch let error {
+            self.completionQueue.addOperation {
+                completionHandler(nil, error)
+            }
+        }
+        }
+    }
+
+    open func fetchAllocatedList(matching query: DataQuery? = nil, headers: HTTPHeaders? = nil, options: RequestOptions? = nil) throws -> Array<AllocatedListType> {
+        let var_query = DataQuery.newIfNull(query: query)
+        let var_headers = HTTPHeaders.emptyIfNull(headers: headers)
+        let var_options = RequestOptions.noneIfNull(options: options)
+        return try AllocatedListType.array(from: self.executeQuery(var_query.fromDefault(InspectproServiceMetadata.EntitySets.allocatedList), headers: var_headers, options: var_options).entityList())
+    }
+
+    open func fetchAllocatedList(matching query: DataQuery = DataQuery(), headers: HTTPHeaders? = nil, options: RequestOptions? = nil, completionHandler: @escaping (Array<AllocatedListType>?, Error?) -> Void) -> Void {
+        self.addBackgroundOperationForFunction {
+        do {
+            let result = try self.fetchAllocatedList(matching: query, headers: headers, options: options)
+            self.completionQueue.addOperation {
+                completionHandler(result, nil)
+            }
+        }
+        catch let error {
+            self.completionQueue.addOperation {
+                completionHandler(nil, error)
+            }
+        }
+        }
+    }
+
+    open func fetchAllocatedListType(matching query: DataQuery, headers: HTTPHeaders? = nil, options: RequestOptions? = nil) throws -> AllocatedListType {
+        let var_headers = HTTPHeaders.emptyIfNull(headers: headers)
+        let var_options = RequestOptions.noneIfNull(options: options)
+        return try CastRequired<AllocatedListType>.from(self.executeQuery(query.fromDefault(InspectproServiceMetadata.EntitySets.allocatedList), headers: var_headers, options: var_options).requiredEntity())
+    }
+
+    open func fetchAllocatedListType(matching query: DataQuery, headers: HTTPHeaders? = nil, options: RequestOptions? = nil, completionHandler: @escaping (AllocatedListType?, Error?) -> Void) -> Void {
+        self.addBackgroundOperationForFunction {
+        do {
+            let result = try self.fetchAllocatedListType(matching: query, headers: headers, options: options)
+            self.completionQueue.addOperation {
+                completionHandler(result, nil)
+            }
+        }
+        catch let error {
+            self.completionQueue.addOperation {
+                completionHandler(nil, error)
+            }
+        }
+        }
+    }
+
+    open func fetchAllocatedListTypeWithKey(id: String?, query: DataQuery? = nil, headers: HTTPHeaders? = nil, options: RequestOptions? = nil) throws -> AllocatedListType {
+        let var_query = DataQuery.newIfNull(query: query)
+        return try self.fetchAllocatedListType(matching: var_query.withKey(AllocatedListType.key(id: id)), headers: headers, options: options)
+    }
+
+    open func fetchAllocatedListTypeWithKey(id: String?, query: DataQuery?, headers: HTTPHeaders? = nil, options: RequestOptions? = nil, completionHandler: @escaping (AllocatedListType?, Error?) -> Void) -> Void {
+        self.addBackgroundOperationForFunction {
+        do {
+            let result = try self.fetchAllocatedListTypeWithKey(id: id, query: query, headers: headers, options: options)
             self.completionQueue.addOperation {
                 completionHandler(result, nil)
             }

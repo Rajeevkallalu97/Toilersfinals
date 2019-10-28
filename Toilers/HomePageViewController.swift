@@ -12,8 +12,11 @@ import SAPFioriFlows
 import SAPOData
 import SAPCommon
 
+
+
 class HomePageViewController: UIViewController {
-  
+
+    
     //Onbaord declaration
     let presentationDelegate = ModalUIViewControllerPresenter()
     var myContext: OnboardingContext!
@@ -49,9 +52,20 @@ class HomePageViewController: UIViewController {
         ]
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
         //logger
         do {
             try SAPcpmsLogUploader.attachToRootLogger()
@@ -68,10 +82,92 @@ class HomePageViewController: UIViewController {
         getAppConfig()
         UINavigationBar.applyFioriStyle()
         onboardOrRestore()
+        
       
     }
     
 
+    //button
+    
+    @IBAction func test(_ sender: Any) {
+      
+        
+        
+    }
+
+    
+    //new entity allocation
+    private func loginSupervisor1(_ serviceRoot: URL, _ urlSession: SAPURLSession) {
+        let oDataProvider = OnlineODataProvider(serviceName: "InspectproService", serviceRoot: serviceRoot, sapURLSession: urlSession)
+        oDataProvider.serviceOptions.checkVersion = false
+        let supervisor = InspectproService(provider: oDataProvider)
+        
+        
+        
+        //add entity
+        var _entity: SupervisorType?
+        var entity: SupervisorType {
+            get {
+                if _entity == nil {
+          _entity = createEntityWithDefaultValues()
+                }
+                return _entity!
+            }
+            set {
+                _entity = newValue
+            }
+        }
+        
+        supervisor.createEntity(entity){error in
+        }
+        func createEntityWithDefaultValues() -> SupervisorType {
+            let newEntity = SupervisorType()
+            
+            newEntity.id = "rajeev"
+            newEntity.name = "helloWorld"
+            // Key properties without default value should be invalid by default for Create scenario
+            if newEntity.id == nil || newEntity.id!.isEmpty {
+                //self.validity["ID"] = false
+            }
+            //self.barButtonShouldBeEnabled()
+            return newEntity
+        }
+        
+        let newEntity = AllComponentsType()
+        newEntity.id = "rajeev"
+        print("success")
+   
+       
+        
+      
+        
+        
+    }
+
+    
+    //print all components
+     func loginSupervisor3(_ serviceRoot: URL, _ urlSession: SAPURLSession) {
+        let oDataProvider = OnlineODataProvider(serviceName: "InspectproService", serviceRoot: serviceRoot, sapURLSession: urlSession)
+        oDataProvider.serviceOptions.checkVersion = false
+        let supervisor = InspectproService(provider: oDataProvider)
+        
+        
+        
+        let queryId = DataQuery()
+            .selectAll().top(20)
+        
+        
+        supervisor.fetchAllComponents(matching: queryId) { userId, error in
+            let userId = userId
+            if let list = userId {
+                for i in 0..<list.count{
+                    print(userId?[i].name)
+                }
+            }
+        }
+        
+    }
+    
 
 //logger functions
 private func uploadLogs(_ urlSession: SAPURLSession, _ settingsParameters: SAPcpmsSettingsParameters) {

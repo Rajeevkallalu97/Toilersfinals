@@ -32,6 +32,8 @@ class SupervisorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ID.text = ""
+        Password.text = ""
         supervisor.getAppConfig()
         supervisor.onboardOrRestore()
       

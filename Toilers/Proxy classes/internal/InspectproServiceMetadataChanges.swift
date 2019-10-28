@@ -16,6 +16,9 @@ internal class InspectproServiceMetadataChanges {
         if !InspectproServiceMetadata.EntityTypes.allComponentsType.isRemoved {
             InspectproServiceMetadata.EntityTypes.allComponentsType = metadata.entityType(withName: "inspectpro.InspectproService.AllComponentsType")
         }
+        if !InspectproServiceMetadata.EntityTypes.allocatedListType.isRemoved {
+            InspectproServiceMetadata.EntityTypes.allocatedListType = metadata.entityType(withName: "inspectpro.InspectproService.AllocatedListType")
+        }
         if !InspectproServiceMetadata.EntityTypes.inspectorType.isRemoved {
             InspectproServiceMetadata.EntityTypes.inspectorType = metadata.entityType(withName: "inspectpro.InspectproService.InspectorType")
         }
@@ -24,6 +27,9 @@ internal class InspectproServiceMetadataChanges {
         }
         if !InspectproServiceMetadata.EntitySets.allComponents.isRemoved {
             InspectproServiceMetadata.EntitySets.allComponents = metadata.entitySet(withName: "AllComponents")
+        }
+        if !InspectproServiceMetadata.EntitySets.allocatedList.isRemoved {
+            InspectproServiceMetadata.EntitySets.allocatedList = metadata.entitySet(withName: "AllocatedList")
         }
         if !InspectproServiceMetadata.EntitySets.inspector.isRemoved {
             InspectproServiceMetadata.EntitySets.inspector = metadata.entitySet(withName: "Inspector")
@@ -63,6 +69,42 @@ internal class InspectproServiceMetadataChanges {
         }
         if !AllComponentsType.photo.isRemoved {
             AllComponentsType.photo = InspectproServiceMetadata.EntityTypes.allComponentsType.property(withName: "Photo")
+        }
+        if !AllocatedListType.id.isRemoved {
+            AllocatedListType.id = InspectproServiceMetadata.EntityTypes.allocatedListType.property(withName: "ID")
+        }
+        if !AllocatedListType.name.isRemoved {
+            AllocatedListType.name = InspectproServiceMetadata.EntityTypes.allocatedListType.property(withName: "Name")
+        }
+        if !AllocatedListType.systemName.isRemoved {
+            AllocatedListType.systemName = InspectproServiceMetadata.EntityTypes.allocatedListType.property(withName: "SystemName")
+        }
+        if !AllocatedListType.make.isRemoved {
+            AllocatedListType.make = InspectproServiceMetadata.EntityTypes.allocatedListType.property(withName: "Make")
+        }
+        if !AllocatedListType.model.isRemoved {
+            AllocatedListType.model = InspectproServiceMetadata.EntityTypes.allocatedListType.property(withName: "Model")
+        }
+        if !AllocatedListType.partNumber.isRemoved {
+            AllocatedListType.partNumber = InspectproServiceMetadata.EntityTypes.allocatedListType.property(withName: "PartNumber")
+        }
+        if !AllocatedListType.serialNumber.isRemoved {
+            AllocatedListType.serialNumber = InspectproServiceMetadata.EntityTypes.allocatedListType.property(withName: "SerialNumber")
+        }
+        if !AllocatedListType.barCode.isRemoved {
+            AllocatedListType.barCode = InspectproServiceMetadata.EntityTypes.allocatedListType.property(withName: "BarCode")
+        }
+        if !AllocatedListType.compartment.isRemoved {
+            AllocatedListType.compartment = InspectproServiceMetadata.EntityTypes.allocatedListType.property(withName: "Compartment")
+        }
+        if !AllocatedListType.condition.isRemoved {
+            AllocatedListType.condition = InspectproServiceMetadata.EntityTypes.allocatedListType.property(withName: "Condition")
+        }
+        if !AllocatedListType.photo.isRemoved {
+            AllocatedListType.photo = InspectproServiceMetadata.EntityTypes.allocatedListType.property(withName: "Photo")
+        }
+        if !AllocatedListType.date.isRemoved {
+            AllocatedListType.date = InspectproServiceMetadata.EntityTypes.allocatedListType.property(withName: "Date")
         }
         if !InspectorType.id.isRemoved {
             InspectorType.id = InspectproServiceMetadata.EntityTypes.inspectorType.property(withName: "ID")
