@@ -123,19 +123,6 @@ class AllocateComponentViewController: UIViewController {
         }
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    
-    
     
     
     private func loginSupervisor1(_ serviceRoot: URL, _ urlSession: SAPURLSession) {

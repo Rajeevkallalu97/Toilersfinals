@@ -15,6 +15,7 @@ class InspectorHomeViewController: UIViewController {
 
    
     var id1 = String()
+  
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if segue.destination is InspectorAllocatedViewController

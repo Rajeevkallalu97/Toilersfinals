@@ -1,7 +1,7 @@
 //# xsc 19.1.5-b4e07e-20190905
 
-import Foundation
 import SAPOData
+import Foundation
 
 internal class InspectproServiceStaticResolver {
     static func resolve() -> Void {
@@ -11,10 +11,12 @@ internal class InspectproServiceStaticResolver {
     private static func resolve1() -> Void {
         Ignore.valueOf_any(InspectproServiceMetadata.EntityTypes.allComponentsType)
         Ignore.valueOf_any(InspectproServiceMetadata.EntityTypes.allocatedListType)
+        Ignore.valueOf_any(InspectproServiceMetadata.EntityTypes.inspectedListType)
         Ignore.valueOf_any(InspectproServiceMetadata.EntityTypes.inspectorType)
         Ignore.valueOf_any(InspectproServiceMetadata.EntityTypes.supervisorType)
         Ignore.valueOf_any(InspectproServiceMetadata.EntitySets.allComponents)
         Ignore.valueOf_any(InspectproServiceMetadata.EntitySets.allocatedList)
+        Ignore.valueOf_any(InspectproServiceMetadata.EntitySets.inspectedList)
         Ignore.valueOf_any(InspectproServiceMetadata.EntitySets.inspector)
         Ignore.valueOf_any(InspectproServiceMetadata.EntitySets.supervisor)
         Ignore.valueOf_any(AllComponentsType.id)
@@ -41,6 +43,19 @@ internal class InspectproServiceStaticResolver {
         Ignore.valueOf_any(AllocatedListType.photo)
         Ignore.valueOf_any(AllocatedListType.date)
         Ignore.valueOf_any(AllocatedListType.inspectorID)
+        Ignore.valueOf_any(InspectedListType.id)
+        Ignore.valueOf_any(InspectedListType.name)
+        Ignore.valueOf_any(InspectedListType.systemName)
+        Ignore.valueOf_any(InspectedListType.make)
+        Ignore.valueOf_any(InspectedListType.model)
+        Ignore.valueOf_any(InspectedListType.partNumber)
+        Ignore.valueOf_any(InspectedListType.serialNumber)
+        Ignore.valueOf_any(InspectedListType.barCode)
+        Ignore.valueOf_any(InspectedListType.compartment)
+        Ignore.valueOf_any(InspectedListType.comments)
+        Ignore.valueOf_any(InspectedListType.priority)
+        Ignore.valueOf_any(InspectedListType.taskCompleted)
+        Ignore.valueOf_any(InspectedListType.inspectorID)
         Ignore.valueOf_any(InspectorType.id)
         Ignore.valueOf_any(InspectorType.name)
         Ignore.valueOf_any(InspectorType.address)

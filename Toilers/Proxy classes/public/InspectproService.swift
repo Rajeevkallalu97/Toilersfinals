@@ -1,7 +1,7 @@
 //# xsc 19.1.5-b4e07e-20190905
 
-import Foundation
 import SAPOData
+import Foundation
 
 open class InspectproService<Provider: DataServiceProvider>: DataService<Provider> {
     public override init(provider: Provider) {
@@ -161,6 +161,72 @@ open class InspectproService<Provider: DataServiceProvider>: DataService<Provide
         }
     }
 
+    open func fetchInspectedList(matching query: DataQuery? = nil, headers: HTTPHeaders? = nil, options: RequestOptions? = nil) throws -> Array<InspectedListType> {
+        let var_query = DataQuery.newIfNull(query: query)
+        let var_headers = HTTPHeaders.emptyIfNull(headers: headers)
+        let var_options = RequestOptions.noneIfNull(options: options)
+        return try InspectedListType.array(from: self.executeQuery(var_query.fromDefault(InspectproServiceMetadata.EntitySets.inspectedList), headers: var_headers, options: var_options).entityList())
+    }
+
+    open func fetchInspectedList(matching query: DataQuery = DataQuery(), headers: HTTPHeaders? = nil, options: RequestOptions? = nil, completionHandler: @escaping (Array<InspectedListType>?, Error?) -> Void) -> Void {
+        self.addBackgroundOperationForFunction {
+        do {
+            let result = try self.fetchInspectedList(matching: query, headers: headers, options: options)
+            self.completionQueue.addOperation {
+                completionHandler(result, nil)
+            }
+        }
+        catch let error {
+            self.completionQueue.addOperation {
+                completionHandler(nil, error)
+            }
+        }
+        }
+    }
+
+    open func fetchInspectedListType(matching query: DataQuery, headers: HTTPHeaders? = nil, options: RequestOptions? = nil) throws -> InspectedListType {
+        let var_headers = HTTPHeaders.emptyIfNull(headers: headers)
+        let var_options = RequestOptions.noneIfNull(options: options)
+        return try CastRequired<InspectedListType>.from(self.executeQuery(query.fromDefault(InspectproServiceMetadata.EntitySets.inspectedList), headers: var_headers, options: var_options).requiredEntity())
+    }
+
+    open func fetchInspectedListType(matching query: DataQuery, headers: HTTPHeaders? = nil, options: RequestOptions? = nil, completionHandler: @escaping (InspectedListType?, Error?) -> Void) -> Void {
+        self.addBackgroundOperationForFunction {
+        do {
+            let result = try self.fetchInspectedListType(matching: query, headers: headers, options: options)
+            self.completionQueue.addOperation {
+                completionHandler(result, nil)
+            }
+        }
+        catch let error {
+            self.completionQueue.addOperation {
+                completionHandler(nil, error)
+            }
+        }
+        }
+    }
+
+    open func fetchInspectedListTypeWithKey(id: String?, query: DataQuery? = nil, headers: HTTPHeaders? = nil, options: RequestOptions? = nil) throws -> InspectedListType {
+        let var_query = DataQuery.newIfNull(query: query)
+        return try self.fetchInspectedListType(matching: var_query.withKey(InspectedListType.key(id: id)), headers: headers, options: options)
+    }
+
+    open func fetchInspectedListTypeWithKey(id: String?, query: DataQuery?, headers: HTTPHeaders? = nil, options: RequestOptions? = nil, completionHandler: @escaping (InspectedListType?, Error?) -> Void) -> Void {
+        self.addBackgroundOperationForFunction {
+        do {
+            let result = try self.fetchInspectedListTypeWithKey(id: id, query: query, headers: headers, options: options)
+            self.completionQueue.addOperation {
+                completionHandler(result, nil)
+            }
+        }
+        catch let error {
+            self.completionQueue.addOperation {
+                completionHandler(nil, error)
+            }
+        }
+        }
+    }
+
     open func fetchInspector(matching query: DataQuery? = nil, headers: HTTPHeaders? = nil, options: RequestOptions? = nil) throws -> Array<InspectorType> {
         let var_query = DataQuery.newIfNull(query: query)
         let var_headers = HTTPHeaders.emptyIfNull(headers: headers)
@@ -291,6 +357,16 @@ open class InspectproService<Provider: DataServiceProvider>: DataService<Provide
             }
         }
         }
+    }
+
+    @available(swift, deprecated: 4.0, renamed: "fetchInspectedList")
+    open func inspectedList(query: DataQuery = DataQuery()) throws -> Array<InspectedListType> {
+        return try self.fetchInspectedList(matching: query)
+    }
+
+    @available(swift, deprecated: 4.0, renamed: "fetchInspectedList")
+    open func inspectedList(query: DataQuery = DataQuery(), completionHandler: @escaping (Array<InspectedListType>?, Error?) -> Void) -> Void {
+        self.fetchInspectedList(matching: query, headers: nil, options: nil, completionHandler: completionHandler)
     }
 
     @available(swift, deprecated: 4.0, renamed: "fetchInspector")

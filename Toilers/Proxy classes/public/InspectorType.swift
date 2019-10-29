@@ -1,7 +1,7 @@
 //# xsc 19.1.5-b4e07e-20190905
 
-import Foundation
 import SAPOData
+import Foundation
 
 open class InspectorType: EntityValue {
     public required init(from decoder: Decoder) throws {

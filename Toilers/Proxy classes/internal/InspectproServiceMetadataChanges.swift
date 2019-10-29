@@ -1,7 +1,7 @@
 //# xsc 19.1.5-b4e07e-20190905
 
-import Foundation
 import SAPOData
+import Foundation
 
 internal class InspectproServiceMetadataChanges {
     static func merge(metadata: CSDLDocument) -> Void {
@@ -19,6 +19,9 @@ internal class InspectproServiceMetadataChanges {
         if !InspectproServiceMetadata.EntityTypes.allocatedListType.isRemoved {
             InspectproServiceMetadata.EntityTypes.allocatedListType = metadata.entityType(withName: "inspectpro.InspectproService.AllocatedListType")
         }
+        if !InspectproServiceMetadata.EntityTypes.inspectedListType.isRemoved {
+            InspectproServiceMetadata.EntityTypes.inspectedListType = metadata.entityType(withName: "inspectpro.InspectproService.InspectedListType")
+        }
         if !InspectproServiceMetadata.EntityTypes.inspectorType.isRemoved {
             InspectproServiceMetadata.EntityTypes.inspectorType = metadata.entityType(withName: "inspectpro.InspectproService.InspectorType")
         }
@@ -30,6 +33,9 @@ internal class InspectproServiceMetadataChanges {
         }
         if !InspectproServiceMetadata.EntitySets.allocatedList.isRemoved {
             InspectproServiceMetadata.EntitySets.allocatedList = metadata.entitySet(withName: "AllocatedList")
+        }
+        if !InspectproServiceMetadata.EntitySets.inspectedList.isRemoved {
+            InspectproServiceMetadata.EntitySets.inspectedList = metadata.entitySet(withName: "InspectedList")
         }
         if !InspectproServiceMetadata.EntitySets.inspector.isRemoved {
             InspectproServiceMetadata.EntitySets.inspector = metadata.entitySet(withName: "Inspector")
@@ -108,6 +114,45 @@ internal class InspectproServiceMetadataChanges {
         }
         if !AllocatedListType.inspectorID.isRemoved {
             AllocatedListType.inspectorID = InspectproServiceMetadata.EntityTypes.allocatedListType.property(withName: "InspectorId")
+        }
+        if !InspectedListType.id.isRemoved {
+            InspectedListType.id = InspectproServiceMetadata.EntityTypes.inspectedListType.property(withName: "ID")
+        }
+        if !InspectedListType.name.isRemoved {
+            InspectedListType.name = InspectproServiceMetadata.EntityTypes.inspectedListType.property(withName: "Name")
+        }
+        if !InspectedListType.systemName.isRemoved {
+            InspectedListType.systemName = InspectproServiceMetadata.EntityTypes.inspectedListType.property(withName: "SystemName")
+        }
+        if !InspectedListType.make.isRemoved {
+            InspectedListType.make = InspectproServiceMetadata.EntityTypes.inspectedListType.property(withName: "Make")
+        }
+        if !InspectedListType.model.isRemoved {
+            InspectedListType.model = InspectproServiceMetadata.EntityTypes.inspectedListType.property(withName: "Model")
+        }
+        if !InspectedListType.partNumber.isRemoved {
+            InspectedListType.partNumber = InspectproServiceMetadata.EntityTypes.inspectedListType.property(withName: "PartNumber")
+        }
+        if !InspectedListType.serialNumber.isRemoved {
+            InspectedListType.serialNumber = InspectproServiceMetadata.EntityTypes.inspectedListType.property(withName: "SerialNumber")
+        }
+        if !InspectedListType.barCode.isRemoved {
+            InspectedListType.barCode = InspectproServiceMetadata.EntityTypes.inspectedListType.property(withName: "BarCode")
+        }
+        if !InspectedListType.compartment.isRemoved {
+            InspectedListType.compartment = InspectproServiceMetadata.EntityTypes.inspectedListType.property(withName: "Compartment")
+        }
+        if !InspectedListType.comments.isRemoved {
+            InspectedListType.comments = InspectproServiceMetadata.EntityTypes.inspectedListType.property(withName: "Comments")
+        }
+        if !InspectedListType.priority.isRemoved {
+            InspectedListType.priority = InspectproServiceMetadata.EntityTypes.inspectedListType.property(withName: "Priority")
+        }
+        if !InspectedListType.taskCompleted.isRemoved {
+            InspectedListType.taskCompleted = InspectproServiceMetadata.EntityTypes.inspectedListType.property(withName: "TaskCompleted")
+        }
+        if !InspectedListType.inspectorID.isRemoved {
+            InspectedListType.inspectorID = InspectproServiceMetadata.EntityTypes.inspectedListType.property(withName: "InspectorId")
         }
         if !InspectorType.id.isRemoved {
             InspectorType.id = InspectproServiceMetadata.EntityTypes.inspectorType.property(withName: "ID")

@@ -29,7 +29,7 @@ class SupervisorHomeViewController: UIViewController {
     
     
     @IBAction func ShowAll(_ sender: Any) {
-        
+        //self.performSegue(withIdentifier: "test", sender: nil)
         self.performSegue(withIdentifier: "AllComponents", sender: nil)
     }
     

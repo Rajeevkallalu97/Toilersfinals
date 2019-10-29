@@ -15,7 +15,9 @@ import SAPCommon
 
 
 class SupervisorAllComponents: UIViewController, UITableViewDataSource, UITableViewDelegate {
-  
+    
+    var myIndex = 0
+    
     let supervisor = HomePageViewController()
     public var loadEntitiesBlock: ((_ completionHandler: @escaping ([AllComponentsType]?, Error?) -> Void) -> Void)?
     var entities: [AllComponentsType] = [AllComponentsType]()
@@ -44,6 +46,7 @@ class SupervisorAllComponents: UIViewController, UITableViewDataSource, UITableV
         
         
     }
+   
     
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         print("\(entities.count)")
@@ -60,6 +63,20 @@ class SupervisorAllComponents: UIViewController, UITableViewDataSource, UITableV
         cell?.textLabel?.text = "\(entities[indexPath.row].name!)"
       
         return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        myIndex = indexPath.row
+        performSegue(withIdentifier: "DetailView", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.destination is AllCompDetailViewController
+        {
+            let vc = segue.destination as? AllCompDetailViewController
+            vc?.myIndex = entities[myIndex].id!
+        }
     }
     
     

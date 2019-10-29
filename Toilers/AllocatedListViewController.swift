@@ -1,71 +1,59 @@
 //
-//  InspectorAllocatedViewController.swift
+//  AllocatedListViewController.swift
 //  Toilers
 //
-//  Created by Sai rajeev Kallalu on 28/10/19.
+//  Created by Sai rajeev Kallalu on 29/10/19.
 //  Copyright © 2019 Sai rajeev Kallalu. All rights reserved.
 //
 
-
-import SAPFiori
 import UIKit
+import SAPFiori
 import SAPFoundation
 import SAPFioriFlows
 import SAPOData
 import SAPCommon
+class AllocatedListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-
-class InspectorAllocatedViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
     var myIndex = 0
     
-    let test = HomePageViewController()
-   
-  
+    @IBOutlet weak var tableView: UITableView!
+    let supervisor = HomePageViewController()
     public var loadEntitiesBlock: ((_ completionHandler: @escaping ([AllocatedListType]?, Error?) -> Void) -> Void)?
     var entities: [AllocatedListType] = [AllocatedListType]()
     
-    //var vc: InspectorViewController = InspectorViewController(nibName: nil, bundle: nil)
-  var id = String()
-    
     override func viewDidLoad() {
-        test.getAppConfig()
-        test.onboardOrRestore()
-        let oDataProvider = OnlineODataProvider(serviceName: "InspectproService", serviceRoot: test.serviceURL, sapURLSession: test.myContext.sapURLSession)
+        super.viewDidLoad()
+        supervisor.getAppConfig()
+        supervisor.onboardOrRestore()
+        let oDataProvider = OnlineODataProvider(serviceName: "InspectproService", serviceRoot: supervisor.serviceURL, sapURLSession: supervisor.myContext.sapURLSession)
         oDataProvider.serviceOptions.checkVersion = false
         let supervisor = InspectproService(provider: oDataProvider)
         
         func fetchAllocatedList(_ completionHandler: @escaping ([AllocatedListType]?, Error?) -> Void) {
             // Only request the first 20 values. If you want to modify the requested entities, you can do it here.
-            let query = DataQuery().selectAll().where(AllocatedListType.inspectorID==(id))
-            //let query = DataQuery().selectAll().top(20)
+            let query = DataQuery().selectAll().top(20)
             do {
                 supervisor.fetchAllocatedList(matching: query, completionHandler: completionHandler)
             }
         }
         loadEntitiesBlock = fetchAllocatedList
         
+        // Do any additional setup after loading the view.
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         myIndex = indexPath.row
-        performSegue(withIdentifier: "StartInspection", sender: self)
+        performSegue(withIdentifier: "AllocatedDetail", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        if segue.destination is InspectorSpecificViewController
+        if segue.destination is AllocatedDetailViewController
         {
-            let vc = segue.destination as? InspectorSpecificViewController
+            let vc = segue.destination as? AllocatedDetailViewController
             vc?.myIndex = entities[myIndex].id!
         }
     }
-    
-    
-   
-    @IBAction func loadData(_ sender: Any) {
-        self.updateTable()
-    }
-    @IBOutlet weak var tableView: UITableView!
     
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         print("\(entities.count)")
@@ -83,7 +71,6 @@ class InspectorAllocatedViewController: UIViewController,UITableViewDelegate, UI
         
         return cell!
     }
-    
     
     
     func updateTable() {
@@ -123,6 +110,9 @@ class InspectorAllocatedViewController: UIViewController,UITableViewDelegate, UI
         }
     }
     
-   
-
+    @IBAction func loadData(_ sender: Any) {
+        
+        self.updateTable()
+    }
+    
 }
