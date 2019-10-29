@@ -1,7 +1,7 @@
 //# xsc 19.1.5-b4e07e-20190905
 
-import SAPOData
 import Foundation
+import SAPOData
 
 open class AllocatedListType: EntityValue {
     public required init(from decoder: Decoder) throws {
@@ -31,6 +31,8 @@ open class AllocatedListType: EntityValue {
     private static var photo_: Property = InspectproServiceMetadata.EntityTypes.allocatedListType.property(withName: "Photo")
 
     private static var date_: Property = InspectproServiceMetadata.EntityTypes.allocatedListType.property(withName: "Date")
+
+    private static var inspectorID_: Property = InspectproServiceMetadata.EntityTypes.allocatedListType.property(withName: "InspectorId")
 
     public init(withDefaults: Bool = true) {
         super.init(withDefaults: withDefaults, type: InspectproServiceMetadata.EntityTypes.allocatedListType)
@@ -171,6 +173,32 @@ open class AllocatedListType: EntityValue {
         }
         set(value) {
             self.setOptionalValue(for: AllocatedListType.id, to: StringValue.of(optional: value))
+        }
+    }
+
+    open class var inspectorID: Property {
+        get {
+            objc_sync_enter(AllocatedListType.self)
+            defer { objc_sync_exit(AllocatedListType.self); }
+            do {
+                return AllocatedListType.inspectorID_
+            }
+        }
+        set(value) {
+            objc_sync_enter(AllocatedListType.self)
+            defer { objc_sync_exit(AllocatedListType.self); }
+            do {
+                AllocatedListType.inspectorID_ = value
+            }
+        }
+    }
+
+    open var inspectorID: String? {
+        get {
+            return StringValue.optional(self.optionalValue(for: AllocatedListType.inspectorID))
+        }
+        set(value) {
+            self.setOptionalValue(for: AllocatedListType.inspectorID, to: StringValue.of(optional: value))
         }
     }
 

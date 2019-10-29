@@ -1,7 +1,7 @@
 //# xsc 19.1.5-b4e07e-20190905
 
-import SAPOData
 import Foundation
+import SAPOData
 
 internal class InspectproServiceMetadataChanges {
     static func merge(metadata: CSDLDocument) -> Void {
@@ -105,6 +105,9 @@ internal class InspectproServiceMetadataChanges {
         }
         if !AllocatedListType.date.isRemoved {
             AllocatedListType.date = InspectproServiceMetadata.EntityTypes.allocatedListType.property(withName: "Date")
+        }
+        if !AllocatedListType.inspectorID.isRemoved {
+            AllocatedListType.inspectorID = InspectproServiceMetadata.EntityTypes.allocatedListType.property(withName: "InspectorId")
         }
         if !InspectorType.id.isRemoved {
             InspectorType.id = InspectproServiceMetadata.EntityTypes.inspectorType.property(withName: "ID")

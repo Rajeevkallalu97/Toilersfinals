@@ -15,7 +15,7 @@ import SAPCommon
 
 class InspectorViewController: UIViewController {
 
-    
+  
     let inspector = HomePageViewController()
     @IBOutlet weak var inspectorpassword: UITextField!
     @IBOutlet weak var inspectorID: UITextField!
@@ -31,7 +31,14 @@ class InspectorViewController: UIViewController {
     
 }
 
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.destination is InspectorHomeViewController
+        {
+            let vc = segue.destination as? InspectorHomeViewController
+            vc?.id1 = inspectorID.text!
+        }
+    }
 
 
 @IBAction func pressed(_ sender: Any) {
@@ -39,11 +46,9 @@ class InspectorViewController: UIViewController {
     
     loginInspector(inspector.serviceURL, inspector.myContext.sapURLSession)
     
-    
 }
-
-
-
+   
+  
 private func loginInspector(_ serviceRoot: URL, _ urlSession: SAPURLSession) {
     let oDataProvider = OnlineODataProvider(serviceName: "InspectproService", serviceRoot: serviceRoot, sapURLSession: urlSession)
     oDataProvider.serviceOptions.checkVersion = false
@@ -63,7 +68,7 @@ private func loginInspector(_ serviceRoot: URL, _ urlSession: SAPURLSession) {
             inspector.fetchInspector(matching: queryPassword) { userPassword, error in
                 let userPassword = userPassword
                 if self.inspectorpassword.text == userPassword?[0].password! {
-                    //shows next screen
+                   super.performSegue(withIdentifier: "InspectorHome", sender: nil)
                     print("success ")
                 }
                 else{

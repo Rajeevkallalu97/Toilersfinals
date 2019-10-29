@@ -1,7 +1,7 @@
 //# xsc 19.1.5-b4e07e-20190905
 
-import SAPOData
 import Foundation
+import SAPOData
 
 open class InspectproService<Provider: DataServiceProvider>: DataService<Provider> {
     public override init(provider: Provider) {

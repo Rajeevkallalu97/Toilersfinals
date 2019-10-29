@@ -91,7 +91,7 @@ class HomePageViewController: UIViewController {
     
     @IBAction func test(_ sender: Any) {
       
-        
+        loginSupervisor1(serviceURL, myContext.sapURLSession)
         
     }
 
@@ -105,8 +105,8 @@ class HomePageViewController: UIViewController {
         
         
         //add entity
-        var _entity: SupervisorType?
-        var entity: SupervisorType {
+        var _entity: AllocatedListType?
+        var entity: AllocatedListType {
             get {
                 if _entity == nil {
           _entity = createEntityWithDefaultValues()
@@ -120,8 +120,8 @@ class HomePageViewController: UIViewController {
         
         supervisor.createEntity(entity){error in
         }
-        func createEntityWithDefaultValues() -> SupervisorType {
-            let newEntity = SupervisorType()
+        func createEntityWithDefaultValues() -> AllocatedListType {
+            let newEntity = AllocatedListType()
             
             newEntity.id = "rajeev"
             newEntity.name = "helloWorld"
@@ -132,16 +132,7 @@ class HomePageViewController: UIViewController {
             //self.barButtonShouldBeEnabled()
             return newEntity
         }
-        
-        let newEntity = AllComponentsType()
-        newEntity.id = "rajeev"
-        print("success")
-   
-       
-        
-      
-        
-        
+  
     }
 
     

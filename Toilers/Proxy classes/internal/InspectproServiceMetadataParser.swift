@@ -1,7 +1,7 @@
 //# xsc 19.1.5-b4e07e-20190905
 
-import SAPOData
 import Foundation
+import SAPOData
 
 internal class InspectproServiceMetadataParser {
     internal static let options: Int = (CSDLOption.allowCaseConflicts | CSDLOption.disableFacetWarnings | CSDLOption.disableNameValidation | CSDLOption.processMixedVersions | CSDLOption.retainOriginalText | CSDLOption.ignoreUndefinedTerms)

@@ -82,7 +82,7 @@ class SupervisorViewController: UIViewController {
                Alert.showIdInvalid(on: self)
                   print("invalid id")
             }
-    }
+        }
     }
 }
 

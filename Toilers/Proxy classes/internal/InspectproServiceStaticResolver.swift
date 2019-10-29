@@ -1,7 +1,7 @@
 //# xsc 19.1.5-b4e07e-20190905
 
-import SAPOData
 import Foundation
+import SAPOData
 
 internal class InspectproServiceStaticResolver {
     static func resolve() -> Void {
@@ -40,6 +40,7 @@ internal class InspectproServiceStaticResolver {
         Ignore.valueOf_any(AllocatedListType.condition)
         Ignore.valueOf_any(AllocatedListType.photo)
         Ignore.valueOf_any(AllocatedListType.date)
+        Ignore.valueOf_any(AllocatedListType.inspectorID)
         Ignore.valueOf_any(InspectorType.id)
         Ignore.valueOf_any(InspectorType.name)
         Ignore.valueOf_any(InspectorType.address)

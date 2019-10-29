@@ -1,49 +1,54 @@
 //
-//  SupervisorHomeViewController.swift
+//  InspectorAllocatedViewController.swift
 //  Toilers
 //
-//  Created by Sai rajeev Kallalu on 15/10/19.
+//  Created by Sai rajeev Kallalu on 28/10/19.
 //  Copyright © 2019 Sai rajeev Kallalu. All rights reserved.
 //
 
-import UIKit
+
 import SAPFiori
+import UIKit
 import SAPFoundation
 import SAPFioriFlows
 import SAPOData
 import SAPCommon
 
 
-class SupervisorAllComponents: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class InspectorAllocatedViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
+    
+    let test = HomePageViewController()
+   
   
-    let supervisor = HomePageViewController()
-    public var loadEntitiesBlock: ((_ completionHandler: @escaping ([AllComponentsType]?, Error?) -> Void) -> Void)?
-    var entities: [AllComponentsType] = [AllComponentsType]()
+    public var loadEntitiesBlock: ((_ completionHandler: @escaping ([AllocatedListType]?, Error?) -> Void) -> Void)?
+    var entities: [AllocatedListType] = [AllocatedListType]()
     
-    
-    
-    @IBOutlet weak var tableView: UITableView!
+    //var vc: InspectorViewController = InspectorViewController(nibName: nil, bundle: nil)
+  var id = String()
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-     
-        supervisor.getAppConfig()
-        supervisor.onboardOrRestore()
-        let oDataProvider = OnlineODataProvider(serviceName: "InspectproService", serviceRoot: supervisor.serviceURL, sapURLSession: supervisor.myContext.sapURLSession)
+        test.getAppConfig()
+        test.onboardOrRestore()
+        let oDataProvider = OnlineODataProvider(serviceName: "InspectproService", serviceRoot: test.serviceURL, sapURLSession: test.myContext.sapURLSession)
         oDataProvider.serviceOptions.checkVersion = false
         let supervisor = InspectproService(provider: oDataProvider)
         
-        func fetchAllComponents(_ completionHandler: @escaping ([AllComponentsType]?, Error?) -> Void) {
+        func fetchAllocatedList(_ completionHandler: @escaping ([AllocatedListType]?, Error?) -> Void) {
             // Only request the first 20 values. If you want to modify the requested entities, you can do it here.
-            let query = DataQuery().selectAll().top(20)
+            let query = DataQuery().selectAll().where(AllocatedListType.inspectorID==(id))
+            //let query = DataQuery().selectAll().top(20)
             do {
-                supervisor.fetchAllComponents(matching: query, completionHandler: completionHandler)
+                supervisor.fetchAllocatedList(matching: query, completionHandler: completionHandler)
             }
         }
-        loadEntitiesBlock = fetchAllComponents
-        
+        loadEntitiesBlock = fetchAllocatedList
         
     }
+   
+    @IBAction func loadData(_ sender: Any) {
+        self.updateTable()
+    }
+    @IBOutlet weak var tableView: UITableView!
     
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         print("\(entities.count)")
@@ -58,12 +63,12 @@ class SupervisorAllComponents: UIViewController, UITableViewDataSource, UITableV
         }
         cell?.detailTextLabel?.text = "\(entities[indexPath.row].id!)"
         cell?.textLabel?.text = "\(entities[indexPath.row].name!)"
-      
+        
         return cell!
     }
     
     
-
+    
     func updateTable() {
         // self.showFioriLoadingIndicator()
         print(entities.count)
@@ -101,11 +106,6 @@ class SupervisorAllComponents: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
-    
-    @IBAction func loadData(_ sender: Any) {
-        self.updateTable()
-    }
-    
-
+   
 
 }
