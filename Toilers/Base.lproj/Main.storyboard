@@ -501,7 +501,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Component ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jd8-No-jNy">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Component ID" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Jd8-No-jNy">
                                 <rect key="frame" x="331" y="146" width="246" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
@@ -510,13 +510,6 @@
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Inspector ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vje-Cs-ufu">
                                 <rect key="frame" x="331" y="219" width="246" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Date To Be Allocated" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F93-nH-ZTq">
-                                <rect key="frame" x="331" y="293" width="246" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -536,22 +529,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kU1-HV-dnK">
-                                <rect key="frame" x="163" y="290" width="128" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9hG-Pc-ScJ">
-                                <rect key="frame" x="299" y="395" width="126" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <state key="normal" title="Allocate Work"/>
-                                <connections>
-                                    <action selector="AllocateWork:" destination="10Z-3R-0jz" eventType="touchUpInside" id="ios-dJ-AKX"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Search For ID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcX-we-cuN">
                                 <rect key="frame" x="20" y="486" width="728" height="67"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -596,13 +573,21 @@
                                     <action selector="Search:" destination="10Z-3R-0jz" eventType="touchUpInside" id="Kva-xp-G0s"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9hG-Pc-ScJ">
+                                <rect key="frame" x="299" y="339" width="126" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="Allocate Work"/>
+                                <connections>
+                                    <action selector="AllocateWork:" destination="10Z-3R-0jz" eventType="touchUpInside" id="ios-dJ-AKX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="VzK-eJ-pIa"/>
                     </view>
                     <connections>
                         <outlet property="ComponentId" destination="Jd8-No-jNy" id="9ck-An-Ypl"/>
-                        <outlet property="Date" destination="F93-nH-ZTq" id="uQf-kD-tmO"/>
                         <outlet property="InspectorId" destination="vje-Cs-ufu" id="0Bq-7y-Lir"/>
                         <outlet property="SearchId" destination="2Xa-Bd-PAn" id="eph-CJ-9ub"/>
                         <outlet property="SearchedComponentId" destination="1cX-iu-EPQ" id="2FG-He-qi2"/>
@@ -1445,12 +1430,22 @@
                                     <action selector="getData:" destination="wH5-p3-aKN" eventType="touchUpInside" id="af7-gs-5ih"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2wy-Kr-ZvK">
+                                <rect key="frame" x="490" y="911" width="80" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="Submit:" destination="wH5-p3-aKN" eventType="touchUpInside" id="PZo-3r-DTA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="tii-qY-tzD"/>
                     </view>
                     <connections>
                         <outlet property="Compartment" destination="YCy-bI-1a5" id="Z6r-Wo-QJz"/>
+                        <outlet property="EnterComments" destination="6pn-Z5-glx" id="dSh-QC-M5M"/>
                         <outlet property="Id" destination="eTX-mP-y6n" id="pon-JC-XrG"/>
                         <outlet property="InspectorId" destination="hon-rP-hXz" id="2Ob-u0-6aN"/>
                         <outlet property="Make" destination="ci5-3y-eEG" id="Pgm-gI-fxf"/>
@@ -1459,6 +1454,8 @@
                         <outlet property="PartNumber" destination="buS-J7-Hxl" id="zvC-4S-fHJ"/>
                         <outlet property="SerialNumber" destination="oVq-EQ-ZQb" id="NQb-E9-qJr"/>
                         <outlet property="SystemName" destination="Aj8-0Z-fve" id="eFA-Cs-4an"/>
+                        <outlet property="priority" destination="EMd-B2-CxQ" id="hN5-nc-dOk"/>
+                        <outlet property="taskCompleted" destination="UHh-on-HBV" id="wzI-JF-D1c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KBl-gT-iAk" userLabel="First Responder" sceneMemberID="firstResponder"/>

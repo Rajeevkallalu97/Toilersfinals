@@ -43,6 +43,7 @@ class AllocateComponentViewController: UIViewController {
     
     @IBAction func AllocateWork(_ sender: Any) {
         loginSupervisor(supervisor.serviceURL, supervisor.myContext.sapURLSession)
+       
     }
     
     
@@ -53,7 +54,7 @@ class AllocateComponentViewController: UIViewController {
         let supervisor = InspectproService(provider: oDataProvider)
         
             let componentId = DataQuery()
-                .select(AllComponentsType.id, AllComponentsType.name, AllComponentsType.systemName, AllComponentsType.make, AllComponentsType.model, AllComponentsType.partNumber, AllComponentsType.serialNumber, AllComponentsType.barCode,AllComponentsType.compartment,AllComponentsType.condition)
+                .selectAll()
                 .where(AllComponentsType.id==(ComponentId.text!))
             
             let inspectorId = DataQuery()
@@ -104,7 +105,7 @@ class AllocateComponentViewController: UIViewController {
                                
                                 return newEntity
                             }
-                            
+                             Alert.createdWork(on: self)
                             
                             }
                         }

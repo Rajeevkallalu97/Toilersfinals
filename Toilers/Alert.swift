@@ -24,6 +24,11 @@ struct Alert {
     
     static func showPasswordInvalid(on pvc : UIViewController){
       basicAlertPattern(on: pvc, wiht: "Invalid Password", message: "Please Enter a valid Password")
+    }
+       static func createdWork(on pvc : UIViewController){
+            basicAlertPattern(on: pvc, wiht: "Created", message: "Work Pack Created Successfully")
+        }
+        
     
-   }
+   
 }
