@@ -20,13 +20,17 @@ class AllocateComponentViewController: UIViewController {
     
     @IBOutlet weak var InspectorId: UITextField!
     
-    @IBOutlet weak var Date: UITextField!
-    
-    
-    @IBOutlet weak var SearchId: UITextField!
-    
+
     @IBOutlet weak var SearchedComponentId: UILabel!
     
+  
+    @IBOutlet weak var SearchId: UITextField!
+    
+    @IBOutlet weak var systemName: UILabel!
+    
+   
+    
+    @IBOutlet weak var systemNametxt: UILabel!
     
     
     override func viewDidLoad() {
@@ -87,11 +91,12 @@ class AllocateComponentViewController: UIViewController {
                             }
                             func createEntityWithDefaultValues() -> AllocatedListType {
                                 let newEntity = AllocatedListType()
-                                
+                                let randomInt = Int.random(in: 1..<5)
+                               // newEntity.trackingID = String(randomInt)
                                 newEntity.id = comId?[0].id
                                 newEntity.inspectorID = insId?[0].id
                                 newEntity.name = comId?[0].name
-                                newEntity.systemName = comId?[0].systemName
+                                newEntity.systemname = comId?[0].systemName
                                 newEntity.make = comId?[0].make
                                 newEntity.model = comId?[0].model
                                 newEntity.partNumber = comId?[0].partNumber
@@ -99,6 +104,7 @@ class AllocateComponentViewController: UIViewController {
                                 newEntity.barCode = comId?[0].barCode
                                 newEntity.compartment = comId?[0].compartment
                                 newEntity.condition = comId?[0].condition
+                             
                                 if newEntity.id == nil || newEntity.id!.isEmpty {
                                    
                                 }
@@ -136,7 +142,7 @@ class AllocateComponentViewController: UIViewController {
             .where(AllComponentsType.name==(SearchId.text!))
         
         let queryId = DataQuery()
-            .select(AllComponentsType.id)
+            .selectAll()
             .where(AllComponentsType.name==(SearchId.text!))
         
         inspector.fetchAllComponents(matching: queryName) { name, error in
@@ -145,6 +151,7 @@ class AllocateComponentViewController: UIViewController {
                 inspector.fetchAllComponents(matching: queryId) { id, error in
                     let id = id
                     self.SearchedComponentId.text = id?[0].id
+                   self.systemName.text = id?[0].systemName
                         print("success ")
                 }
                 

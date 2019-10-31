@@ -70,6 +70,18 @@ class InspectedListViewController: UIViewController, UITableViewDataSource, UITa
         if cell == nil{
             cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
         }
+        
+        
+        cell!.accessoryType = .checkmark
+        if (entities[indexPath.row].taskCompleted?.contains("YES"))!
+            {
+                print("Found")
+                cell!.accessoryType = .checkmark
+                
+            }
+        else{
+            cell!.accessoryType = .none
+        }
         cell?.detailTextLabel?.text = "\(entities[indexPath.row].id!)"
         cell?.textLabel?.text = "\(entities[indexPath.row].name!)"
         

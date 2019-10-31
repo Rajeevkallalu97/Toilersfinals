@@ -565,7 +565,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="daw-3e-bDW">
-                                <rect key="frame" x="330" y="720" width="64" height="38"/>
+                                <rect key="frame" x="331" y="814" width="64" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" title="Search"/>
@@ -574,7 +574,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9hG-Pc-ScJ">
-                                <rect key="frame" x="299" y="339" width="126" height="38"/>
+                                <rect key="frame" x="299" y="317" width="126" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" title="Allocate Work"/>
@@ -582,6 +582,20 @@
                                     <action selector="AllocateWork:" destination="10Z-3R-0jz" eventType="touchUpInside" id="ios-dJ-AKX"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="System Name For ID:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3mr-T4-8TS">
+                                <rect key="frame" x="20" y="735" width="271" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6O-h8-He8">
+                                <rect key="frame" x="331" y="728" width="417" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="VzK-eJ-pIa"/>
@@ -590,7 +604,9 @@
                         <outlet property="ComponentId" destination="Jd8-No-jNy" id="9ck-An-Ypl"/>
                         <outlet property="InspectorId" destination="vje-Cs-ufu" id="0Bq-7y-Lir"/>
                         <outlet property="SearchId" destination="2Xa-Bd-PAn" id="eph-CJ-9ub"/>
-                        <outlet property="SearchedComponentId" destination="1cX-iu-EPQ" id="2FG-He-qi2"/>
+                        <outlet property="SearchedComponentId" destination="1cX-iu-EPQ" id="Z89-lI-ssf"/>
+                        <outlet property="systemName" destination="n6O-h8-He8" id="ovu-HD-9aT"/>
+                        <outlet property="systemNametxt" destination="n6O-h8-He8" id="Xk6-nQ-WDp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H6M-xd-mob" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -76,14 +76,20 @@ internal class InspectproServiceMetadataChanges {
         if !AllComponentsType.photo.isRemoved {
             AllComponentsType.photo = InspectproServiceMetadata.EntityTypes.allComponentsType.property(withName: "Photo")
         }
+        if !AllocatedListType.trackingID.isRemoved {
+            AllocatedListType.trackingID = InspectproServiceMetadata.EntityTypes.allocatedListType.property(withName: "TrackingID")
+        }
         if !AllocatedListType.id.isRemoved {
             AllocatedListType.id = InspectproServiceMetadata.EntityTypes.allocatedListType.property(withName: "ID")
+        }
+        if !AllocatedListType.inspectorID.isRemoved {
+            AllocatedListType.inspectorID = InspectproServiceMetadata.EntityTypes.allocatedListType.property(withName: "InspectorId")
         }
         if !AllocatedListType.name.isRemoved {
             AllocatedListType.name = InspectproServiceMetadata.EntityTypes.allocatedListType.property(withName: "Name")
         }
-        if !AllocatedListType.systemName.isRemoved {
-            AllocatedListType.systemName = InspectproServiceMetadata.EntityTypes.allocatedListType.property(withName: "SystemName")
+        if !AllocatedListType.systemname.isRemoved {
+            AllocatedListType.systemname = InspectproServiceMetadata.EntityTypes.allocatedListType.property(withName: "Systemname")
         }
         if !AllocatedListType.make.isRemoved {
             AllocatedListType.make = InspectproServiceMetadata.EntityTypes.allocatedListType.property(withName: "Make")
@@ -112,17 +118,20 @@ internal class InspectproServiceMetadataChanges {
         if !AllocatedListType.date.isRemoved {
             AllocatedListType.date = InspectproServiceMetadata.EntityTypes.allocatedListType.property(withName: "Date")
         }
-        if !AllocatedListType.inspectorID.isRemoved {
-            AllocatedListType.inspectorID = InspectproServiceMetadata.EntityTypes.allocatedListType.property(withName: "InspectorId")
+        if !InspectedListType.trackingID.isRemoved {
+            InspectedListType.trackingID = InspectproServiceMetadata.EntityTypes.inspectedListType.property(withName: "TrackingID")
         }
         if !InspectedListType.id.isRemoved {
             InspectedListType.id = InspectproServiceMetadata.EntityTypes.inspectedListType.property(withName: "ID")
         }
+        if !InspectedListType.inspectorID.isRemoved {
+            InspectedListType.inspectorID = InspectproServiceMetadata.EntityTypes.inspectedListType.property(withName: "InspectorId")
+        }
         if !InspectedListType.name.isRemoved {
             InspectedListType.name = InspectproServiceMetadata.EntityTypes.inspectedListType.property(withName: "Name")
         }
-        if !InspectedListType.systemName.isRemoved {
-            InspectedListType.systemName = InspectproServiceMetadata.EntityTypes.inspectedListType.property(withName: "SystemName")
+        if !InspectedListType.systemname.isRemoved {
+            InspectedListType.systemname = InspectproServiceMetadata.EntityTypes.inspectedListType.property(withName: "Systemname")
         }
         if !InspectedListType.make.isRemoved {
             InspectedListType.make = InspectproServiceMetadata.EntityTypes.inspectedListType.property(withName: "Make")
@@ -151,8 +160,8 @@ internal class InspectproServiceMetadataChanges {
         if !InspectedListType.taskCompleted.isRemoved {
             InspectedListType.taskCompleted = InspectproServiceMetadata.EntityTypes.inspectedListType.property(withName: "TaskCompleted")
         }
-        if !InspectedListType.inspectorID.isRemoved {
-            InspectedListType.inspectorID = InspectproServiceMetadata.EntityTypes.inspectedListType.property(withName: "InspectorId")
+        if !InspectedListType.date.isRemoved {
+            InspectedListType.date = InspectproServiceMetadata.EntityTypes.inspectedListType.property(withName: "Date")
         }
         if !InspectorType.id.isRemoved {
             InspectorType.id = InspectproServiceMetadata.EntityTypes.inspectorType.property(withName: "ID")

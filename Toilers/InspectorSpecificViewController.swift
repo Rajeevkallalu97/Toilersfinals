@@ -66,9 +66,10 @@ class InspectorSpecificViewController: UIViewController {
         supervisor.fetchAllocatedList(matching: queryId) { userId, error in
             let userId = userId
             if  userId!.count>0 {
+                
                 self.Id.text = userId?[0].id
                 self.InspectorId.text = userId?[0].name
-                self.SystemName.text = userId?[0].systemName
+                self.SystemName.text = userId?[0].systemname
                 self.Make.text = userId?[0].make
                 self.Model.text = userId?[0].model
                 self.PartNumber.text = userId?[0].partNumber
@@ -115,11 +116,12 @@ class InspectorSpecificViewController: UIViewController {
                 }
                 func createEntityWithDefaultValues() -> InspectedListType {
                     let newEntity = InspectedListType()
-                    
+                    let randomInt = Int.random(in: 1..<5)
+                   // newEntity.trackingID = String(randomInt)
                     newEntity.id = userId?[0].id
                     newEntity.inspectorID = userId?[0].inspectorID
                     newEntity.name = userId?[0].name
-                    newEntity.systemName = userId?[0].systemName
+                    newEntity.systemname = userId?[0].systemname
                     newEntity.make = userId?[0].make
                     newEntity.model = userId?[0].model
                     newEntity.partNumber = userId?[0].partNumber

@@ -140,15 +140,15 @@ open class InspectproService<Provider: DataServiceProvider>: DataService<Provide
         }
     }
 
-    open func fetchAllocatedListTypeWithKey(id: String?, query: DataQuery? = nil, headers: HTTPHeaders? = nil, options: RequestOptions? = nil) throws -> AllocatedListType {
+    open func fetchAllocatedListTypeWithKey(trackingID: String?, query: DataQuery? = nil, headers: HTTPHeaders? = nil, options: RequestOptions? = nil) throws -> AllocatedListType {
         let var_query = DataQuery.newIfNull(query: query)
-        return try self.fetchAllocatedListType(matching: var_query.withKey(AllocatedListType.key(id: id)), headers: headers, options: options)
+        return try self.fetchAllocatedListType(matching: var_query.withKey(AllocatedListType.key(trackingID: trackingID)), headers: headers, options: options)
     }
 
-    open func fetchAllocatedListTypeWithKey(id: String?, query: DataQuery?, headers: HTTPHeaders? = nil, options: RequestOptions? = nil, completionHandler: @escaping (AllocatedListType?, Error?) -> Void) -> Void {
+    open func fetchAllocatedListTypeWithKey(trackingID: String?, query: DataQuery?, headers: HTTPHeaders? = nil, options: RequestOptions? = nil, completionHandler: @escaping (AllocatedListType?, Error?) -> Void) -> Void {
         self.addBackgroundOperationForFunction {
         do {
-            let result = try self.fetchAllocatedListTypeWithKey(id: id, query: query, headers: headers, options: options)
+            let result = try self.fetchAllocatedListTypeWithKey(trackingID: trackingID, query: query, headers: headers, options: options)
             self.completionQueue.addOperation {
                 completionHandler(result, nil)
             }
@@ -206,15 +206,15 @@ open class InspectproService<Provider: DataServiceProvider>: DataService<Provide
         }
     }
 
-    open func fetchInspectedListTypeWithKey(id: String?, query: DataQuery? = nil, headers: HTTPHeaders? = nil, options: RequestOptions? = nil) throws -> InspectedListType {
+    open func fetchInspectedListTypeWithKey(trackingID: String?, query: DataQuery? = nil, headers: HTTPHeaders? = nil, options: RequestOptions? = nil) throws -> InspectedListType {
         let var_query = DataQuery.newIfNull(query: query)
-        return try self.fetchInspectedListType(matching: var_query.withKey(InspectedListType.key(id: id)), headers: headers, options: options)
+        return try self.fetchInspectedListType(matching: var_query.withKey(InspectedListType.key(trackingID: trackingID)), headers: headers, options: options)
     }
 
-    open func fetchInspectedListTypeWithKey(id: String?, query: DataQuery?, headers: HTTPHeaders? = nil, options: RequestOptions? = nil, completionHandler: @escaping (InspectedListType?, Error?) -> Void) -> Void {
+    open func fetchInspectedListTypeWithKey(trackingID: String?, query: DataQuery?, headers: HTTPHeaders? = nil, options: RequestOptions? = nil, completionHandler: @escaping (InspectedListType?, Error?) -> Void) -> Void {
         self.addBackgroundOperationForFunction {
         do {
-            let result = try self.fetchInspectedListTypeWithKey(id: id, query: query, headers: headers, options: options)
+            let result = try self.fetchInspectedListTypeWithKey(trackingID: trackingID, query: query, headers: headers, options: options)
             self.completionQueue.addOperation {
                 completionHandler(result, nil)
             }

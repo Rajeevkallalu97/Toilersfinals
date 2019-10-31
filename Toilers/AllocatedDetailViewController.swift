@@ -59,7 +59,7 @@ class AllocatedDetailViewController: UIViewController {
             if  userId!.count>0 {
                 self.Id.text = userId?[0].id
                 self.Name.text = userId?[0].inspectorID
-                self.SystemName.text = userId?[0].systemName
+                self.SystemName.text = userId?[0].systemname
                 self.Make.text = userId?[0].make
                 self.Model.text = userId?[0].model
                 self.PartNumber.text = userId?[0].partNumber

@@ -8,11 +8,15 @@ open class InspectedListType: EntityValue {
         try super.init(from: decoder)
     }
 
+    private static var trackingID_: Property = InspectproServiceMetadata.EntityTypes.inspectedListType.property(withName: "TrackingID")
+
     private static var id_: Property = InspectproServiceMetadata.EntityTypes.inspectedListType.property(withName: "ID")
+
+    private static var inspectorID_: Property = InspectproServiceMetadata.EntityTypes.inspectedListType.property(withName: "InspectorId")
 
     private static var name_: Property = InspectproServiceMetadata.EntityTypes.inspectedListType.property(withName: "Name")
 
-    private static var systemName_: Property = InspectproServiceMetadata.EntityTypes.inspectedListType.property(withName: "SystemName")
+    private static var systemname_: Property = InspectproServiceMetadata.EntityTypes.inspectedListType.property(withName: "Systemname")
 
     private static var make_: Property = InspectproServiceMetadata.EntityTypes.inspectedListType.property(withName: "Make")
 
@@ -32,7 +36,7 @@ open class InspectedListType: EntityValue {
 
     private static var taskCompleted_: Property = InspectproServiceMetadata.EntityTypes.inspectedListType.property(withName: "TaskCompleted")
 
-    private static var inspectorID_: Property = InspectproServiceMetadata.EntityTypes.inspectedListType.property(withName: "InspectorId")
+    private static var date_: Property = InspectproServiceMetadata.EntityTypes.inspectedListType.property(withName: "Date")
 
     public init(withDefaults: Bool = true) {
         super.init(withDefaults: withDefaults, type: InspectproServiceMetadata.EntityTypes.inspectedListType)
@@ -124,6 +128,32 @@ open class InspectedListType: EntityValue {
         return CastRequired<InspectedListType>.from(self.copyEntity())
     }
 
+    open class var date: Property {
+        get {
+            objc_sync_enter(InspectedListType.self)
+            defer { objc_sync_exit(InspectedListType.self); }
+            do {
+                return InspectedListType.date_
+            }
+        }
+        set(value) {
+            objc_sync_enter(InspectedListType.self)
+            defer { objc_sync_exit(InspectedListType.self); }
+            do {
+                InspectedListType.date_ = value
+            }
+        }
+    }
+
+    open var date: LocalDateTime? {
+        get {
+            return LocalDateTime.castOptional(self.optionalValue(for: InspectedListType.date))
+        }
+        set(value) {
+            self.setOptionalValue(for: InspectedListType.date, to: value)
+        }
+    }
+
     open class var id: Property {
         get {
             objc_sync_enter(InspectedListType.self)
@@ -182,8 +212,8 @@ open class InspectedListType: EntityValue {
         }
     }
 
-    open class func key(id: String?) -> EntityKey {
-        return EntityKey().with(name: "ID", value: StringValue.of(optional: id))
+    open class func key(trackingID: String?) -> EntityKey {
+        return EntityKey().with(name: "TrackingID", value: StringValue.of(optional: trackingID))
     }
 
     open class var make: Property {
@@ -348,29 +378,29 @@ open class InspectedListType: EntityValue {
         }
     }
 
-    open class var systemName: Property {
+    open class var systemname: Property {
         get {
             objc_sync_enter(InspectedListType.self)
             defer { objc_sync_exit(InspectedListType.self); }
             do {
-                return InspectedListType.systemName_
+                return InspectedListType.systemname_
             }
         }
         set(value) {
             objc_sync_enter(InspectedListType.self)
             defer { objc_sync_exit(InspectedListType.self); }
             do {
-                InspectedListType.systemName_ = value
+                InspectedListType.systemname_ = value
             }
         }
     }
 
-    open var systemName: String? {
+    open var systemname: String? {
         get {
-            return StringValue.optional(self.optionalValue(for: InspectedListType.systemName))
+            return StringValue.optional(self.optionalValue(for: InspectedListType.systemname))
         }
         set(value) {
-            self.setOptionalValue(for: InspectedListType.systemName, to: StringValue.of(optional: value))
+            self.setOptionalValue(for: InspectedListType.systemname, to: StringValue.of(optional: value))
         }
     }
 
@@ -397,6 +427,32 @@ open class InspectedListType: EntityValue {
         }
         set(value) {
             self.setOptionalValue(for: InspectedListType.taskCompleted, to: StringValue.of(optional: value))
+        }
+    }
+
+    open class var trackingID: Property {
+        get {
+            objc_sync_enter(InspectedListType.self)
+            defer { objc_sync_exit(InspectedListType.self); }
+            do {
+                return InspectedListType.trackingID_
+            }
+        }
+        set(value) {
+            objc_sync_enter(InspectedListType.self)
+            defer { objc_sync_exit(InspectedListType.self); }
+            do {
+                InspectedListType.trackingID_ = value
+            }
+        }
+    }
+
+    open var trackingID: String? {
+        get {
+            return StringValue.optional(self.optionalValue(for: InspectedListType.trackingID))
+        }
+        set(value) {
+            self.setOptionalValue(for: InspectedListType.trackingID, to: StringValue.of(optional: value))
         }
     }
 }

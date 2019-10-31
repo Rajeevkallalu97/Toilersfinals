@@ -28,6 +28,9 @@ struct Alert {
        static func createdWork(on pvc : UIViewController){
             basicAlertPattern(on: pvc, wiht: "Created", message: "Work Pack Created Successfully")
         }
+    static func testDone(on pvc : UIViewController){
+        basicAlertPattern(on: pvc, wiht: "Done", message: "Test Report Uploaded Successfully")
+    }
         
     
    

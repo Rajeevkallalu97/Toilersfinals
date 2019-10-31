@@ -8,11 +8,15 @@ open class AllocatedListType: EntityValue {
         try super.init(from: decoder)
     }
 
+    private static var trackingID_: Property = InspectproServiceMetadata.EntityTypes.allocatedListType.property(withName: "TrackingID")
+
     private static var id_: Property = InspectproServiceMetadata.EntityTypes.allocatedListType.property(withName: "ID")
+
+    private static var inspectorID_: Property = InspectproServiceMetadata.EntityTypes.allocatedListType.property(withName: "InspectorId")
 
     private static var name_: Property = InspectproServiceMetadata.EntityTypes.allocatedListType.property(withName: "Name")
 
-    private static var systemName_: Property = InspectproServiceMetadata.EntityTypes.allocatedListType.property(withName: "SystemName")
+    private static var systemname_: Property = InspectproServiceMetadata.EntityTypes.allocatedListType.property(withName: "Systemname")
 
     private static var make_: Property = InspectproServiceMetadata.EntityTypes.allocatedListType.property(withName: "Make")
 
@@ -31,8 +35,6 @@ open class AllocatedListType: EntityValue {
     private static var photo_: Property = InspectproServiceMetadata.EntityTypes.allocatedListType.property(withName: "Photo")
 
     private static var date_: Property = InspectproServiceMetadata.EntityTypes.allocatedListType.property(withName: "Date")
-
-    private static var inspectorID_: Property = InspectproServiceMetadata.EntityTypes.allocatedListType.property(withName: "InspectorId")
 
     public init(withDefaults: Bool = true) {
         super.init(withDefaults: withDefaults, type: InspectproServiceMetadata.EntityTypes.allocatedListType)
@@ -208,8 +210,8 @@ open class AllocatedListType: EntityValue {
         }
     }
 
-    open class func key(id: String?) -> EntityKey {
-        return EntityKey().with(name: "ID", value: StringValue.of(optional: id))
+    open class func key(trackingID: String?) -> EntityKey {
+        return EntityKey().with(name: "TrackingID", value: StringValue.of(optional: trackingID))
     }
 
     open class var make: Property {
@@ -374,29 +376,55 @@ open class AllocatedListType: EntityValue {
         }
     }
 
-    open class var systemName: Property {
+    open class var systemname: Property {
         get {
             objc_sync_enter(AllocatedListType.self)
             defer { objc_sync_exit(AllocatedListType.self); }
             do {
-                return AllocatedListType.systemName_
+                return AllocatedListType.systemname_
             }
         }
         set(value) {
             objc_sync_enter(AllocatedListType.self)
             defer { objc_sync_exit(AllocatedListType.self); }
             do {
-                AllocatedListType.systemName_ = value
+                AllocatedListType.systemname_ = value
             }
         }
     }
 
-    open var systemName: String? {
+    open var systemname: String? {
         get {
-            return StringValue.optional(self.optionalValue(for: AllocatedListType.systemName))
+            return StringValue.optional(self.optionalValue(for: AllocatedListType.systemname))
         }
         set(value) {
-            self.setOptionalValue(for: AllocatedListType.systemName, to: StringValue.of(optional: value))
+            self.setOptionalValue(for: AllocatedListType.systemname, to: StringValue.of(optional: value))
+        }
+    }
+
+    open class var trackingID: Property {
+        get {
+            objc_sync_enter(AllocatedListType.self)
+            defer { objc_sync_exit(AllocatedListType.self); }
+            do {
+                return AllocatedListType.trackingID_
+            }
+        }
+        set(value) {
+            objc_sync_enter(AllocatedListType.self)
+            defer { objc_sync_exit(AllocatedListType.self); }
+            do {
+                AllocatedListType.trackingID_ = value
+            }
+        }
+    }
+
+    open var trackingID: String? {
+        get {
+            return StringValue.optional(self.optionalValue(for: AllocatedListType.trackingID))
+        }
+        set(value) {
+            self.setOptionalValue(for: AllocatedListType.trackingID, to: StringValue.of(optional: value))
         }
     }
 }
