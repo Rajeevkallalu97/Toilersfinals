@@ -39,6 +39,13 @@ class AllocatedDetailViewController: UIViewController {
     }
     
     
+    
+    @IBAction func logOut(_ sender: Any) {
+        let dashboardVC = navigationController!.viewControllers.filter { $0 is HomePageViewController }.first!
+        navigationController!.popToViewController(dashboardVC, animated: true)
+    }
+    
+    
     @IBAction func getData(_ sender: Any) {
         loginSupervisor(AllDetail.serviceURL, AllDetail.myContext.sapURLSession)
     }

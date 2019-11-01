@@ -35,6 +35,12 @@ class BarcodeViewController: UIViewController {
         
     }
 
+    @IBAction func logOut(_ sender: Any) {
+        let dashboardVC = navigationController!.viewControllers.filter { $0 is HomePageViewController }.first!
+        navigationController!.popToViewController(dashboardVC, animated: true)
+    }
+    
+    
     @IBAction func submit(_ sender: Any) {
     
     self.loginInspector(barcode.serviceURL, barcode.myContext.sapURLSession)

@@ -25,10 +25,12 @@ class SupervisorHomeViewController: UIViewController {
     
     
     
-    
     @IBAction func logOut(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        let dashboardVC = navigationController!.viewControllers.filter { $0 is HomePageViewController }.first!
+        navigationController!.popToViewController(dashboardVC, animated: true)
     }
+    
+
     
     
     @IBAction func ShowAll(_ sender: Any) {

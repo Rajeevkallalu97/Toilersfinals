@@ -37,7 +37,11 @@ class AllCompDetailViewController: UIViewController {
        
        
     }
-    
+  
+    @IBAction func logOut(_ sender: Any) {
+        let dashboardVC = navigationController!.viewControllers.filter { $0 is HomePageViewController }.first!
+        navigationController!.popToViewController(dashboardVC, animated: true)
+    }
     @IBAction func getDetails(_ sender: Any) {
          loginSupervisor(AllDetail.serviceURL, AllDetail.myContext.sapURLSession)
     }

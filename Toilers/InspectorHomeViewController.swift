@@ -36,6 +36,13 @@ class InspectorHomeViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    
+    @IBAction func logOut(_ sender: Any) {
+        let dashboardVC = navigationController!.viewControllers.filter { $0 is HomePageViewController }.first!
+        navigationController!.popToViewController(dashboardVC, animated: true)
+    }
+    
+    
     @IBAction func barcode(_ sender: Any) {
         self.performSegue(withIdentifier: "barHome", sender: self)
     }

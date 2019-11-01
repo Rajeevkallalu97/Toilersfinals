@@ -40,6 +40,13 @@ class ImageViewController: UIViewController {
         
     }
     
+    
+    @IBAction func logOut(_ sender: Any) {
+        let dashboardVC = navigationController!.viewControllers.filter { $0 is HomePageViewController }.first!
+        navigationController!.popToViewController(dashboardVC, animated: true)
+    }
+    
+    
     @IBAction func get(_ sender: Any) {
         if ((start.text?.contains("BRAKE"))! && (end.text?.contains("DRUM"))!){
         self.assignbackgroundAB()
