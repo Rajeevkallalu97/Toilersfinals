@@ -1,10 +1,11 @@
 //
-//  InspectorSpecificViewController.swift
+//  BarcodeDetailViewController.swift
 //  Toilers
 //
-//  Created by Sai rajeev Kallalu on 29/10/19.
+//  Created by Sai rajeev Kallalu on 1/11/19.
 //  Copyright © 2019 Sai rajeev Kallalu. All rights reserved.
 //
+
 
 import UIKit
 import SAPFoundation
@@ -12,7 +13,9 @@ import SAPFioriFlows
 import SAPOData
 import SAPCommon
 
-class InspectorSpecificViewController: UIViewController {
+class BarcodeDetailViewController: UIViewController {
+
+    var id = String()
     var myIndex = ""
     let AllDetail = HomePageViewController()
     @IBOutlet weak var Id: UILabel!
@@ -25,7 +28,7 @@ class InspectorSpecificViewController: UIViewController {
     @IBOutlet weak var SerialNumber: UILabel!
     
     @IBOutlet weak var Compartment: UILabel!
-
+    
     @IBOutlet weak var InspectorId: UILabel!
     
     @IBOutlet weak var priority: UITextField!
@@ -45,8 +48,8 @@ class InspectorSpecificViewController: UIViewController {
     }
     
     @IBAction func Submit(_ sender: Any) {
-         loginSupervisor1(AllDetail.serviceURL, AllDetail.myContext.sapURLSession)
-        Alert.submitted(on: self)
+        loginSupervisor1(AllDetail.serviceURL, AllDetail.myContext.sapURLSession)
+         Alert.submitted(on: self)
     }
     
     @IBAction func getData(_ sender: Any) {
@@ -61,23 +64,23 @@ class InspectorSpecificViewController: UIViewController {
         
         let queryId = DataQuery()
             .select()
-            .where(AllocatedListType.id==(myIndex))
+            .where(AllComponentsType.barCode==(myIndex))
         
         
-        supervisor.fetchAllocatedList(matching: queryId) { userId, error in
+        supervisor.fetchAllComponents(matching: queryId) { userId, error in
             let userId = userId
             if  userId!.count>0 {
                 
                 self.Id.text = userId?[0].id
-                self.InspectorId.text = userId?[0].name
-                self.SystemName.text = userId?[0].systemname
+                self.InspectorId.text = self.id
+                self.SystemName.text = userId?[0].systemName
                 self.Make.text = userId?[0].make
                 self.Model.text = userId?[0].model
                 self.PartNumber.text = userId?[0].partNumber
                 self.SerialNumber.text = userId?[0].serialNumber
                 self.Compartment.text = userId?[0].compartment
-               
-                self.Name.text = userId?[0].inspectorID
+                
+                self.Name.text = self.id
                 
                 
             }
@@ -86,17 +89,17 @@ class InspectorSpecificViewController: UIViewController {
         
     }
     
-     //newentity allocation
+    //newentity allocation
     private func loginSupervisor1(_ serviceRoot: URL, _ urlSession: SAPURLSession) {
         let oDataProvider = OnlineODataProvider(serviceName: "InspectproService", serviceRoot: serviceRoot, sapURLSession: urlSession)
         oDataProvider.serviceOptions.checkVersion = false
         let supervisor = InspectproService(provider: oDataProvider)
         let queryId = DataQuery()
-            .selectAll()
-            .where(AllocatedListType.id==(myIndex))
+            .select()
+            .where(AllComponentsType.barCode==(myIndex))
         
         
-        supervisor.fetchAllocatedList(matching: queryId) { userId, error in
+        supervisor.fetchAllComponents(matching: queryId) { userId, error in
             let userId = userId
             if  userId!.count>0 {
                 //add entity
@@ -118,11 +121,11 @@ class InspectorSpecificViewController: UIViewController {
                 func createEntityWithDefaultValues() -> InspectedListType {
                     let newEntity = InspectedListType()
                     let randomInt = Int.random(in: 1..<4999)
-                    newEntity.trackingID = String(randomInt)
+                     newEntity.trackingID = String(randomInt)
                     newEntity.id = userId?[0].id
-                    newEntity.inspectorID = userId?[0].inspectorID
+                    newEntity.inspectorID = self.id
                     newEntity.name = userId?[0].name
-                    newEntity.systemname = userId?[0].systemname
+                    newEntity.systemname = userId?[0].systemName
                     newEntity.make = userId?[0].make
                     newEntity.model = userId?[0].model
                     newEntity.partNumber = userId?[0].partNumber
@@ -142,7 +145,7 @@ class InspectorSpecificViewController: UIViewController {
             }
             
         }
-       
+        
     }
-   
+
 }

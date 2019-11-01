@@ -14,6 +14,7 @@ import SAPCommon
 
 class AllocateComponentViewController: UIViewController {
  let supervisor = HomePageViewController()
+   
     
     
     @IBOutlet weak var ComponentId: UITextField!
@@ -40,6 +41,11 @@ class AllocateComponentViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func logOut(_ sender: Any) {
+        let dashboardVC = navigationController!.viewControllers.filter { $0 is HomePageViewController }.first!
+        navigationController!.popToViewController(dashboardVC, animated: true)
+        
+    }
     
     @IBAction func Search(_ sender: Any) {
          loginSupervisor1(supervisor.serviceURL, supervisor.myContext.sapURLSession)
@@ -91,8 +97,8 @@ class AllocateComponentViewController: UIViewController {
                             }
                             func createEntityWithDefaultValues() -> AllocatedListType {
                                 let newEntity = AllocatedListType()
-                                let randomInt = Int.random(in: 1..<5)
-                               // newEntity.trackingID = String(randomInt)
+                                let randomInt = Int.random(in: 1..<4999)
+                                newEntity.trackingID = String(randomInt)
                                 newEntity.id = comId?[0].id
                                 newEntity.inspectorID = insId?[0].id
                                 newEntity.name = comId?[0].name
@@ -157,7 +163,7 @@ class AllocateComponentViewController: UIViewController {
                 
             }
             else{
-                Alert.showIdInvalid(on: self)
+                Alert.showIdInvName(on: self)
                 print("invalid id")
             }
         }

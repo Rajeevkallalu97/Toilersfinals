@@ -78,6 +78,7 @@ class InspectorAllocatedViewController: UIViewController,UITableViewDelegate, UI
         if cell == nil{
             cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
         }
+        
         cell?.detailTextLabel?.text = "\(entities[indexPath.row].id!)"
         cell?.textLabel?.text = "\(entities[indexPath.row].name!)"
         

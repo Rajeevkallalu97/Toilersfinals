@@ -23,6 +23,11 @@ class InspectorHomeViewController: UIViewController {
             let vc = segue.destination as? InspectorAllocatedViewController
             vc!.id = id1
         }
+        if segue.destination is BarcodeViewController
+        {
+            let vc = segue.destination as? BarcodeViewController
+            vc!.id1 = id1
+        }
     }
     
    
@@ -31,6 +36,9 @@ class InspectorHomeViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func barcode(_ sender: Any) {
+        self.performSegue(withIdentifier: "barHome", sender: self)
+    }
     @IBAction func showList(_ sender: Any) {
        
          self.performSegue(withIdentifier: "InspectorComp", sender: nil)

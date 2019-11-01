@@ -38,6 +38,7 @@ class InspectorViewController: UIViewController {
             let vc = segue.destination as? InspectorHomeViewController
             vc?.id1 = inspectorID.text!
         }
+      
     }
 
 
